@@ -6,8 +6,9 @@ const auth = require('../middleware/auth')
 const { sendWelcomeEmail, sendCancelationEmail } = require('../emails/account')
 
 router.post('/users', async (req, res) => {
+    console.log('here')
     const user = new User(req.body)
-
+    console.log(user)
     try {
         await user.save()
         sendWelcomeEmail(user.email, user.name)
